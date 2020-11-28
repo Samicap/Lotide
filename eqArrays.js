@@ -8,13 +8,27 @@ const assertEqual = function(actual, expected) {
 };
 
 // Implement a function eqArrays which takes in two arrays and returns true or false, based on a perfect match.
-
 let eqArrays = function(a, b) {
-  return Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index]);
+  // console.log(a.length, b.length);
+  if (a.length === b.length) {
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) {
+        return false;
+      }
+    }
+    return true;
+  } else {
+    return false;
+  }
 };
+
+// Old code for eqArrays.  Didn't seem to work once i got to eqObjects due to the Arrary.isArray
+// let eqArrays = function(a, b) {
+//   return Array.isArray(a) &&
+//     Array.isArray(b) &&
+//     a.length === b.length &&
+//     a.every((val, index) => val === b[index]);
+// };
 
 assertEqual(eqArrays([1, 2, 3], [1, 2, 3, 4]), true);
 assertEqual(eqArrays([1, 3, 4], [5, 6, 7]), false);
