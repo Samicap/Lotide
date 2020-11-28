@@ -7,42 +7,49 @@ const assertEqual = function(actual, expected) {
 };
 
 let eqArrays = function(a, b) {
-  return Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index]);
+  // console.log(a.length, b.length);
+  if (a.length === b.length) {
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) {
+        return false;
+      }
+    }
+    return true;
+  } else {
+    return false;
+  }
 };
 
 const eqObjects = function(object1, object2) {
-// Returns true if both objects have identical keys with identical values.
-// Otherwise you get back a big fat false!
+  // Returns true if both objects have identical keys with identical values.
+  // Otherwise you get back a big fat false!
   let objectOneKeys = Object.keys(object1);
   let objectTwoKeys = Object.keys(object2);
   // They have the same number of keys
-  if (objectOneKeys.length !== objectTwoKeys.length) {
-  }
-  // The value for each key in one object is the same as the value for that same key in the other object
-  for (const keys of objectOneKeys) {
-    if (!object1[keys] === object2[keys]) {
-      // As soon as there is not a match, we can return false
-      return false 
-    }
-    // check if the key valus is an array and use eqArrays to check equality
-    // if(Array.isArray(keyOne)) {
-    //       eqArrays(object[keyOne], objectB[keyOne])
+  if (objectOneKeys.length === objectTwoKeys.length) {
+    // The value for each key in one object is the same as the value for that same key in the other object
+    for (const keys of objectOneKeys) {
+      if (object1[keys].isArray) {
+        if (eqArrays(object1[keys], object2[keys])) {
+          // As soon as there is not a match, we can return false
+          return false;
+          // check if the key valus is an array and use eqArrays to check equality
         }
-  return true;
+
+      } else {
+        if (object1[keys] !== object2[keys]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  } else {
+    return false;
   }
-// }
+};
 
 
-// let found = 0
-  // if (found == objectOneKeys.length){
-  //   return true
-  // }else {
-  //   return false
-  // }
-// }
+
 
 // https://dmitripavlutin.com/how-to-compare-objects-in-javascript/  //ERM YEAH.......GOT IT TILL THAT LAST FUNCTION
 // for (const keyOne of objectOneKeys) {
@@ -54,7 +61,7 @@ const eqObjects = function(object1, object2) {
 //       return false;
 //     }
 // return true
-// } 
+// }
 
 // function isObject(object) {
 //   return object != null && typeof object === 'object';
@@ -71,11 +78,11 @@ console.log(eqObjects(ab, ba)); // => true
 const abc = { a: "1", b: "2", c: "3" };
 console.log(eqObjects(ab, abc)); // => false
 
-const abcd = {a: "1", b: "7"};
+const abcd = { a: "1", b: "7" };
 console.log(eqObjects(ab, abcd)); // => false
 
 
 
 
-// assertEqual(eqObjects(ab, ba), true);
-// assertEqual(eqObjects(ab, abc), true);
+assertEqual(eqObjects(ab, ba), true);
+assertEqual(eqObjects(ab, abc), true);
