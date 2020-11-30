@@ -1,17 +1,5 @@
-let eqArrays = function(a, b) {
-  return Array.isArray(a) &&
-    Array.isArray(b) &&
-    a.length === b.length &&
-    a.every((val, index) => val === b[index]);
-};
 
-const assertEqual = function(actual, expected) {
-  if (eqArrays(actual, expected)) {
-    console.log(`💚 Assertion Passed: ${actual}  ===  ${expected}`);
-  } else {
-    console.log(`💔 Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
+const assertArraysEqual = require('./assertArraysEqual'); // doesnt do anything
 
 const middle = function(findTheMiddle) {
   let output = [];
@@ -26,7 +14,9 @@ const middle = function(findTheMiddle) {
     }
   }
   return output;
-  }
+  };
+
+  module.exports = middle;
 
 //i need to find the middle element of an array
 
@@ -36,5 +26,5 @@ const middle = function(findTheMiddle) {
  
 
 
-assertEqual(middle([1, 2, 3]), [2]) // => [2, 3]
-assertEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4]) // => [3, 4]
+// assertArraysEqual(middle([1, 2, 3]), [2]) // => [2, 3]
+// assertArraysEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4]) // => [3, 4]
