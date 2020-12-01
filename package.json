@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "SamicapLotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lighthouse Labs Lotide Project",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Samicap/Lotide.git"
   },
-  "author": "",
+  "author": "samicap",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Samicap/Lotide/issues"
