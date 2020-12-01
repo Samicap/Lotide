@@ -1,5 +1,5 @@
 {
-  "name": "SamicapLotide2",
+  "name": "@samicap/lotide",
   "version": "1.0.0",
   "description": "Lighthouse Labs Lotide Project",
   "main": "assertArraysEqual.js",
